@@ -1,0 +1,71 @@
+{
+  "name": "twitchvod",
+  "description": "CLI to retrieve Twitch.tv VODs",
+  "version": "0.0.0",
+  "author": "MatejTuray @MatejTuray",
+  "bin": {
+    "twitchvod": "./bin/run"
+  },
+  "bugs": "https://github.com/MatejTuray/twitchvod/issues",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.17",
+    "@oclif/command": "^1.5.12",
+    "@oclif/config": "^1.12.12",
+    "@oclif/plugin-help": "^2.1.6",
+    "axios": "^0.18.0",
+    "cli-progress": "^2.1.1",
+    "cli-ux": "^5.2.1",
+    "colors-cli": "^1.0.21",
+    "fluent-ffmpeg": "^2.1.2",
+    "moment": "^2.24.0",
+    "node-twitch-link": "github:BernardJeremy/node-twitch-link",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.0",
+    "@oclif/test": "^1.2.4",
+    "@oclif/tslint": "^3.1.1",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.14.4",
+    "chai": "^4.2.0",
+    "globby": "^8.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3333"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/MatejTuray/twitchvod",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "twitchvod",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "MatejTuray/twitchvod",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rimraf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
