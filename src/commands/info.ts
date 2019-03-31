@@ -1,8 +1,10 @@
-import { Command, flags } from '@oclif/command'
+import {Command, flags} from '@oclif/command'
 import axios from 'axios'
+import cli from 'cli-ux'
+
 const moment = require('moment')
 const color = require('colors-cli')
-import cli from 'cli-ux'
+require('dotenv').config()
 
 export default class Info extends Command {
   static description = 'Fetches basic information about Twitch.tv video'
@@ -24,23 +26,23 @@ export default class Info extends Command {
   ]
 
   static flags = {
-    help: flags.help({ char: 'h' })
+    help: flags.help({char: 'h'})
   }
 
-  static args = [{ name: 'vod' }]
+  static args = [{name: 'vod'}]
 
   async run() {
     const warn = color.yellow
     const green = color.green
     const red = color.red
-    const { args, flags } = this.parse(Info)
+    const {args} = this.parse(Info)
     const tokenObj = {
       client_id: process.env.TWITCH_CLIENT
     }
-    const headers = { 'Client-ID': tokenObj.client_id }
+    const headers = {'Client-ID': tokenObj.client_id}
     if (args.vod) {
       const url = args.vod
-      cli.action.start('Fetching information', 'running', { stdout: true })
+      cli.action.start('Fetching information', 'running', {stdout: true})
       interface InfoObj {
         name: string
         title: string
@@ -56,7 +58,7 @@ export default class Info extends Command {
           `https://api.twitch.tv/kraken/videos/${
             url.indexOf('/') !== -1 ? url.substr(url.lastIndexOf('/') + 1) : url
           }`,
-          { headers }
+          {headers}
         )
         .then(res => {
           cli.action.stop(green('complete!'))
@@ -74,7 +76,6 @@ export default class Info extends Command {
           }
           let resArray = []
           for (let elem of Object.keys(infoObj.resolutions)) {
-            let resol = infoObj.resolutions[elem]
             resArray.push(elem)
           }
           this.log('-'.repeat(80))
@@ -89,8 +90,8 @@ export default class Info extends Command {
         })
         .catch(e => this.log(red(e)))
     } else {
-      console.log(red('Error: No url or video id provided'))
-      console.log(warn('Run the command with --help flag to learn more'))
+      this.log(red('Error: No url or video id provided'))
+      this.log(warn('Run the command with --help flag to learn more'))
     }
   }
 }

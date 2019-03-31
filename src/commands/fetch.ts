@@ -1,10 +1,11 @@
-import { flags, Command } from '@oclif/command'
+import {Command, flags} from '@oclif/command'
+import cli from 'cli-ux'
 const color = require('colors-cli')
 const getTwitchLink = require('node-twitch-link')
-let ffmpeg = require('fluent-ffmpeg')
+const ffmpeg = require('fluent-ffmpeg')
 require('dotenv').config()
-import cli from 'cli-ux'
 const _cliProgress = require('cli-progress')
+
 export default class Fetch extends Command {
   static description = 'Downloads and processes Twitch.tv video'
 
@@ -14,7 +15,7 @@ export default class Fetch extends Command {
   ]
 
   static flags = {
-    help: flags.help({ char: 'h' }),
+    help: flags.help({char: 'h'}),
     res: flags.string({
       char: 'r',
       description: 'Video resolution',
@@ -48,7 +49,7 @@ export default class Fetch extends Command {
     const warn = color.yellow
     const green = color.green
     const red = color.red
-    const { args, flags } = this.parse(Fetch)
+    const {args, flags} = this.parse(Fetch)
     const tokenObj = {
       client_id: process.env.TWITCH_CLIENT
     }
@@ -56,7 +57,7 @@ export default class Fetch extends Command {
       const twitchUrl = args.vod
       let percent = '0'
       //axios.get();
-      cli.action.start('Fetching video links', `running`, {
+      cli.action.start('Fetching video links', 'running', {
         stdout: true
       })
       const link = `${
@@ -65,7 +66,7 @@ export default class Fetch extends Command {
           : twitchUrl
       }`
       cli.action.stop(green('done!'))
-      console.log(warn('Converting video...'))
+      this.log(warn('Converting video...'))
       const output =
         twitchUrl.indexOf('/') === -1
           ? twitchUrl
@@ -73,17 +74,17 @@ export default class Fetch extends Command {
       getTwitchLink(link, tokenObj)
         .then((linkArray: any) => {
           const bar = new _cliProgress.Bar(
-            { stream: process.stdout },
+            {stream: process.stdout},
             _cliProgress.Presets.shades_classic
           )
           const video = linkArray.find(
-            (link: { type: string | undefined }) => link.type === flags.res
+            (link: {type: string | undefined}) => link.type === flags.res
           )
           if (!video) {
             const resolutionArray: any[] = linkArray.map(
-              (item: { type: any }) => item.type
+              (item: {type: any}) => item.type
             )
-            console.log(
+            this.log(
               warn(
                 'Provided resolution not found, try running --res=option with these options'
               ),
@@ -92,17 +93,16 @@ export default class Fetch extends Command {
           }
           ffmpeg(video.url)
             .on('error', (error: string | undefined) => {
-              console.log(error)
+              this.log(red(error))
             })
             .on('end', () => {
               bar.stop()
-              console.log(green('Video converted'))
+              this.log(green('Video converted'))
             })
             .on('start', () => {
               bar.start(100, 0)
-              console.log(video.url)
             })
-            .on('progress', (progress: { percent: number }) => {
+            .on('progress', (progress: {percent: number}) => {
               percent = progress.percent.toPrecision(4).toString()
               7
               bar.update(percent)
@@ -112,8 +112,8 @@ export default class Fetch extends Command {
         })
         .catch((e: Error) => this.log(red(e.toString())))
     } else {
-      console.log(red('Error: No url or video id provided'))
-      console.log(warn('hint: run the command with --help flag to learn more'))
+      this.log(red('Error: No url or video id provided'))
+      this.log(warn('hint: run the command with --help flag to learn more'))
     }
   }
 }
