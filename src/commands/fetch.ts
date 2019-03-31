@@ -2,8 +2,8 @@ import { flags, Command } from '@oclif/command'
 const color = require('colors-cli')
 const getTwitchLink = require('node-twitch-link')
 let ffmpeg = require('fluent-ffmpeg')
+require('dotenv').config()
 import cli from 'cli-ux'
-const path = require('path')
 const _cliProgress = require('cli-progress')
 export default class Fetch extends Command {
   static description = 'Downloads and processes Twitch.tv video'
@@ -50,7 +50,7 @@ export default class Fetch extends Command {
     const red = color.red
     const { args, flags } = this.parse(Fetch)
     const tokenObj = {
-      client_id: 'bc0jezu5plohhw08pud3z5bpojodr9'
+      client_id: process.env.TWITCH_CLIENT
     }
     if (args.vod && flags.res) {
       const twitchUrl = args.vod
