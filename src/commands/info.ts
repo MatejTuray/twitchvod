@@ -12,17 +12,7 @@ export default class Info extends Command {
   static examples = [
     `$ twitchvod info https://www.twitch.tv/videos/401113393
 
-    Fetching information... complete!
-    --------------------------------------------------------------------------------
-    Streamer: shroud
-    Title: Special Guest SOON!! #ad | @shroud on socials for updates
-    Game: Apex Legends
-    Video length: 08:18:36
-    Video date: 25/03/2019
-    Video views: 89563
-    Language: en
-    Resolutions: 160p30,360p30,480p30,720p30,720p60,chunked
-`
+   `
   ]
 
   static flags = {

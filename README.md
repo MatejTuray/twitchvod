@@ -50,7 +50,7 @@ OPTIONS
   -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only  [default: chunked] Video resolution
 
 EXAMPLE
-  $ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out=Some path for output file here
+  $ twitchvod fetch 401113393 --res=720p60 --out=Some path for output file here
 ```
 
 _See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v0.0.0/src\commands\fetch.ts)_
@@ -85,17 +85,6 @@ OPTIONS
 
 EXAMPLE
   $ twitchvod info https://www.twitch.tv/videos/401113393
-
-       Fetching information... complete!
-       --------------------------------------------------------------------------------
-       Streamer: shroud
-       Title: Special Guest SOON!! #ad | @shroud on socials for updates
-       Game: Apex Legends
-       Video length: 08:18:36
-       Video date: 25/03/2019
-       Video views: 89563
-       Language: en
-       Resolutions: 160p30,360p30,480p30,720p30,720p60,chunked
 ```
 
 _See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v0.0.0/src\commands\info.ts)_
