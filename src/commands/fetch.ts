@@ -18,7 +18,7 @@ export default class Fetch extends Command {
     help: flags.help({char: 'h'}),
     res: flags.string({
       char: 'r',
-      description: 'Video resolution',
+      description: 'Video resolution (chunked is the highest quality)',
       default: 'chunked',
       options: [
         'chunked',

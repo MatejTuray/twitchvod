@@ -1,5 +1,4 @@
-twitchvod
-=========
+# twitchvod
 
 CLI to retrieve Twitch.tv VODs
 
@@ -8,12 +7,16 @@ CLI to retrieve Twitch.tv VODs
 [![Codecov](https://codecov.io/gh/MatejTuray/twitchvod/branch/master/graph/badge.svg)](https://codecov.io/gh/MatejTuray/twitchvod)
 [![Downloads/week](https://img.shields.io/npm/dw/twitchvod.svg)](https://npmjs.org/package/twitchvod)
 [![License](https://img.shields.io/npm/l/twitchvod.svg)](https://github.com/MatejTuray/twitchvod/blob/master/package.json)
+[![Build](https://travis-ci.org/MatejTuray/twitchvod.svg?branch=master)]
 
 <!-- toc -->
+* [twitchvod](#twitchvod)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
 ```sh-session
 $ npm install -g twitchvod
@@ -27,7 +30,9 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
 * [`twitchvod fetch VOD`](#twitchvod-fetch-vod)
 * [`twitchvod help [COMMAND]`](#twitchvod-help-command)
@@ -47,7 +52,9 @@ ARGUMENTS
 OPTIONS
   -h, --help                                                       show CLI help
   -o, --out=out                                                    Output file path
-  -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only  [default: chunked] Video resolution
+
+  -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only  [default: chunked] Video resolution (chunked is the
+                                                                   highest quality)
 
 EXAMPLE
   $ twitchvod fetch 401113393 --res=720p60 --out=Some path for output file here
