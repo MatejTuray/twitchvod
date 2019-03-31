@@ -9,8 +9,7 @@ export default class Fetch extends Command {
   static description = "Downloads and processes Twitch.tv video";
 
   static examples = [
-    `$ twitchvod hello
-hello world from ./src/hello.ts!
+    `$ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out=C:\Users\User\Desktop\
 `
   ];
 
@@ -26,7 +25,6 @@ hello world from ./src/hello.ts!
         "720p30",
         "480p30",
         "360p30",
-        "180p30",
         "160p30",
         "audio_only"
       ]
@@ -69,6 +67,10 @@ hello world from ./src/hello.ts!
       }`;
       cli.action.stop(green("done!"));
       console.log(warn("Converting video..."));
+      const output =
+        twitchUrl.indexOf("/") === -1
+          ? twitchUrl
+          : twitchUrl.substr(twitchUrl.lastIndexOf("/") + 1) + ".mp4";
       getTwitchLink(link, tokenObj)
         .then((linkArray: any) => {
           const bar = new _cliProgress.Bar(
@@ -99,6 +101,7 @@ hello world from ./src/hello.ts!
             })
             .on("start", () => {
               bar.start(100, 0);
+              console.log(video.url);
             })
             .on("progress", (progress: { percent: number }) => {
               percent = progress.percent.toPrecision(4).toString();
@@ -106,23 +109,7 @@ hello world from ./src/hello.ts!
               bar.update(percent);
             })
             .outputOptions(["-c copy", "-bsf:a aac_adtstoasc", "-f mp4"])
-            .save(flags.out + twitchUrl + ".mp4");
-        })
-        .catch((e: Error) => this.log(red(e.toString())));
-    } else if (args.vod && !flags.res) {
-      const url = args.vod;
-      cli.action.start("Fetching video links", "running", { stdout: true });
-      const link = `${
-        url.indexOf("/") === -1 ? `https://twitch.tv/videos/${url}` : url
-      }`;
-      console.log(link);
-      getTwitchLink(link, tokenObj)
-        .then((linkArray: any) => {
-          cli.action.stop(green("done!"));
-          let resolutions: any = linkArray.map(
-            (item: { type: any }) => item.type
-          );
-          console.log(resolutions);
+            .save(flags.out + output);
         })
         .catch((e: Error) => this.log(red(e.toString())));
     } else {
