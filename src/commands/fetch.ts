@@ -9,7 +9,7 @@ export default class Fetch extends Command {
   static description = "Downloads and processes Twitch.tv video";
 
   static examples = [
-    `$ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out=C:\Users\User\Desktop\
+    `$ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out="Some path for output file here"
 `
   ];
 
