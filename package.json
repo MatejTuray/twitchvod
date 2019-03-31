@@ -16,6 +16,7 @@
     "cli-progress": "^2.1.1",
     "cli-ux": "^5.2.1",
     "colors-cli": "^1.0.21",
+    "dotenv": "^7.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.24.0",
     "node-twitch-link": "github:BernardJeremy/node-twitch-link",
