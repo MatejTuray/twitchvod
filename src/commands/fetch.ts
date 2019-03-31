@@ -51,7 +51,7 @@ export default class Fetch extends Command {
     const red = color.red
     const {args, flags} = this.parse(Fetch)
     const tokenObj = {
-      client_id: process.env.TWITCH_CLIENT
+      client_id: ''
     }
     if (args.vod && flags.res) {
       const twitchUrl = args.vod

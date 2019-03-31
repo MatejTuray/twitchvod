@@ -27,7 +27,7 @@ export default class Info extends Command {
     const red = color.red
     const {args} = this.parse(Info)
     const tokenObj = {
-      client_id: process.env.TWITCH_CLIENT
+      client_id: ''
     }
     const headers = {'Client-ID': tokenObj.client_id}
     if (args.vod) {

@@ -9,7 +9,7 @@ const executeCommand = (
 ) => {
   args.unshift(
     'node',
-    path.resolve(path.join(__dirname, '..', '..', 'bin', 'run'))
+    path.resolve(path.join(__dirname, '..', '..', 'bin', 'twitchvod'))
   )
 
   exec(args.join(' '), (err: any, stdout: any, stderr: any) => {
