@@ -1,19 +1,13 @@
-import { expect, test } from "@oclif/test";
+import {expect, test} from '@oclif/test'
+let chai = require('chai')
+let chaiHttp = require('chai-http')
+require('dotenv').config()
 
-describe("info", () => {
+describe('info', () => {
   test
     .stdout()
-    .command(["info", "402207468"])
-    .it("runs info", ctx => {
-      expect(ctx.stdout).to.not.contain("error");
-    });
-});
-
-describe("fetch", () => {
-  test
-    .stdout()
-    .command(["info", "402207468"])
-    .it("runs fetch", ctx => {
-      expect(ctx.stdout).to.not.contain("error");
-    });
-});
+    .command(['info', '402207468'])
+    .it('runs info without an error', ctx => {
+      expect(ctx.stdout).to.not.contain('Error')
+    })
+})

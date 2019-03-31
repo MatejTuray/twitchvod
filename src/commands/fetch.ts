@@ -56,7 +56,6 @@ export default class Fetch extends Command {
     if (args.vod && flags.res) {
       const twitchUrl = args.vod
       let percent = '0'
-      //axios.get();
       cli.action.start('Fetching video links', 'running', {
         stdout: true
       })
@@ -65,8 +64,7 @@ export default class Fetch extends Command {
           ? `https://twitch.tv/videos/${twitchUrl}`
           : twitchUrl
       }`
-      cli.action.stop(green('done!'))
-      this.log(warn('Converting video...'))
+      cli.action.stop(green('√'))
       const output =
         twitchUrl.indexOf('/') === -1
           ? twitchUrl
@@ -90,29 +88,38 @@ export default class Fetch extends Command {
               ),
               warn(resolutionArray)
             )
+          } else if (video) {
+            ffmpeg(video.url)
+              .on('error', (error: string) => {
+                bar.stop()
+                return process.stdout.write(error)
+              })
+              .on('end', () => {
+                bar.stop()
+                this.log(green('√') + ' Video converted')
+              })
+              .on('start', () => {
+                let res = video.url.split('/')
+                this.log(`Valid link found ${green('√')}`)
+                this.log(
+                  `Resolution: ${res[4]}
+                  `
+                )
+
+                bar.start(100, 0)
+              })
+              .on('progress', (progress: {percent: number}) => {
+                percent = progress.percent.toPrecision(4).toString()
+                7
+                bar.update(percent)
+              })
+              .outputOptions(['-c copy', '-bsf:a aac_adtstoasc', '-f mp4'])
+              .save(flags.out + output)
           }
-          ffmpeg(video.url)
-            .on('error', (error: string | undefined) => {
-              this.log(red(error))
-            })
-            .on('end', () => {
-              bar.stop()
-              this.log(green('Video converted'))
-            })
-            .on('start', () => {
-              bar.start(100, 0)
-            })
-            .on('progress', (progress: {percent: number}) => {
-              percent = progress.percent.toPrecision(4).toString()
-              7
-              bar.update(percent)
-            })
-            .outputOptions(['-c copy', '-bsf:a aac_adtstoasc', '-f mp4'])
-            .save(flags.out + output)
         })
         .catch((e: Error) => this.log(red(e.toString())))
     } else {
-      this.log(red('Error: No url or video id provided'))
+      this.log(red('Something bad happened'))
       this.log(warn('hint: run the command with --help flag to learn more'))
     }
   }
