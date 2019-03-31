@@ -100,7 +100,7 @@ export default class Fetch extends Command {
               })
               .on('start', () => {
                 let res = video.url.split('/')
-                this.log(`Valid link found ${green('√')}`)
+                this.log(`Valid link found... ${green('√')}`)
                 this.log(
                   `Resolution: ${res[4]}
                   `
