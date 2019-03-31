@@ -50,7 +50,7 @@ OPTIONS
   -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only  [default: chunked] Video resolution
 
 EXAMPLE
-  $ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out="Some path for output file here"
+  $ twitchvod fetch https://www.twitch.tv/videos/401113393 --res=720p60 --out=Some path for output file here
 ```
 
 _See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v0.0.0/src\commands\fetch.ts)_
