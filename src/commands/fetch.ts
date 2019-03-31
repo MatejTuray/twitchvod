@@ -114,7 +114,7 @@ export default class Fetch extends Command {
         .catch((e: Error) => this.log(red(e.toString())));
     } else {
       console.log(red("Error: No url or video id provided"));
-      console.log(warn("Run the command with --help flag to learn more"));
+      console.log(warn("hint: run the command with --help flag to learn more"));
     }
   }
 }
