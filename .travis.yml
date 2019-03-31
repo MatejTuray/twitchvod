@@ -5,10 +5,10 @@ node_js:
 cache: npm
 
 script:
+  - npm install
   - .\bin\run --version
   - .\bin\run --help
   - npm run test
-
 
 after_success:
   - .\node_modules\.bin\nyc report --reporter text-lcov > coverage.lcov
