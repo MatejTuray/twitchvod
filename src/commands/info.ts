@@ -5,7 +5,7 @@ import cli from 'cli-ux'
 const moment = require('moment')
 const color = require('colors-cli')
 require('dotenv').config()
-const client: string = process.env.TWITCH_CLIENT as string
+
 export default class Info extends Command {
   static description = 'Fetches basic information about Twitch.tv video'
 
@@ -26,9 +26,7 @@ export default class Info extends Command {
     const green = color.green
     const red = color.red
     const {args} = this.parse(Info)
-    const tokenObj = {
-      client_id: client
-    }
+
     const headers = {'Client-ID': 'bc0jezu5plohhw08pud3z5bpojodr9'}
     if (args.vod) {
       const url = args.vod
