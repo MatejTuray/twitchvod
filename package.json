@@ -1,7 +1,7 @@
 {
   "name": "twitchvod",
   "description": "CLI to retrieve Twitch.tv VODs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "MatejTuray @MatejTuray",
   "bin": {
     "twitchvod": "./bin/twitchvod"
