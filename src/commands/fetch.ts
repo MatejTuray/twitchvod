@@ -89,9 +89,9 @@ export default class Fetch extends Command {
             )
           } else if (video) {
             ffmpeg(video.url)
-              .on('error', (error: string) => {
+              .on('error', (error: any) => {
                 bar.stop()
-                process.stdout.write(error)
+                this.log(red(error))
               })
               .on('end', () => {
                 bar.stop()
