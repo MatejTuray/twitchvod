@@ -23,7 +23,7 @@ $ npm install -g twitchvod
 $ twitchvod COMMAND
 running command...
 $ twitchvod (-v|--version|version)
-twitchvod/1.0.1 win32-x64 node-v10.15.1
+twitchvod/1.0.2 win32-x64 node-v10.15.1
 $ twitchvod --help [COMMAND]
 USAGE
   $ twitchvod COMMAND
@@ -60,7 +60,7 @@ EXAMPLE
   $ twitchvod fetch 401113393 --res=720p60 --out=Some path for output file here
 ```
 
-_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.1/src\commands\fetch.ts)_
+_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.2/src\commands\fetch.ts)_
 
 ## `twitchvod help [COMMAND]`
 
@@ -94,5 +94,5 @@ EXAMPLE
   $ twitchvod info https://www.twitch.tv/videos/401113393
 ```
 
-_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.1/src\commands\info.ts)_
+_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.2/src\commands\info.ts)_
 <!-- commandsstop -->
