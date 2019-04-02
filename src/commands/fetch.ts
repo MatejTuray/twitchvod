@@ -101,7 +101,7 @@ export default class Fetch extends Command {
                 notifier.notify({
                   title: 'Conversion complete',
                   message: 'Your video was successfully saved',
-                  icon: path.join(__dirname, 'notif.jpg'), // Absolute path (doesn't work on balloons)
+                  icon: path.join(__dirname, 'notif.png'), // Absolute path (doesn't work on balloons)
                   sound: true // Only Notification Center or Windows Toasters
                 })
               })
