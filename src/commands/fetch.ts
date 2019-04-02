@@ -5,7 +5,7 @@ const getTwitchLink = require('node-twitch-link')
 const ffmpeg = require('fluent-ffmpeg')
 require('dotenv').config()
 const _cliProgress = require('cli-progress')
-
+const client: string = process.env.TWITCH_CLIENT as string
 export default class Fetch extends Command {
   static description = 'Downloads and processes Twitch.tv video'
 
@@ -51,11 +51,10 @@ export default class Fetch extends Command {
     const red = color.red
     const {args, flags} = this.parse(Fetch)
     const tokenObj = {
-      client_id: ''
+      client_id: client
     }
     if (args.vod && flags.res) {
       const twitchUrl = args.vod
-      let percent = '0'
       cli.action.start('Fetching video links', 'running', {
         stdout: true
       })
@@ -108,19 +107,21 @@ export default class Fetch extends Command {
 
                 bar.start(100, 0)
               })
-              .on('progress', (progress: {percent: number}) => {
-                percent = progress.percent.toPrecision(4).toString()
-                7
-                bar.update(percent)
+              .on('progress', (progress: any) => {
+                bar.update(progress.percent.toPrecision(4).toString())
               })
               .outputOptions(['-c copy', '-bsf:a aac_adtstoasc', '-f mp4'])
               .save(flags.out + output)
           }
         })
-        .catch((e: Error) => this.log(red(e.toString())))
-    } else {
-      this.log(red('Something bad happened'))
-      this.log(warn('hint: run the command with --help flag to learn more'))
+        .catch((e: any) => {
+          let userError = e.toString()
+          this.log(
+            red(
+              userError.substring(0, userError.indexOf('-')) + 'VOD not found'
+            )
+          )
+        })
     }
   }
 }

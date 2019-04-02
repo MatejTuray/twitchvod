@@ -5,7 +5,7 @@ import cli from 'cli-ux'
 const moment = require('moment')
 const color = require('colors-cli')
 require('dotenv').config()
-
+const client: string = process.env.TWITCH_CLIENT as string
 export default class Info extends Command {
   static description = 'Fetches basic information about Twitch.tv video'
 
@@ -27,7 +27,7 @@ export default class Info extends Command {
     const red = color.red
     const {args} = this.parse(Info)
     const tokenObj = {
-      client_id: ''
+      client_id: client
     }
     const headers = {'Client-ID': tokenObj.client_id}
     if (args.vod) {
@@ -51,7 +51,7 @@ export default class Info extends Command {
           {headers}
         )
         .then(res => {
-          cli.action.stop(green('complete!'))
+          cli.action.stop(green('√'))
           let infoObj: InfoObj = {
             name: res.data.channel.name,
             title: res.data.title,
@@ -78,7 +78,7 @@ export default class Info extends Command {
           this.log(`Language: ${infoObj.language}`)
           this.log(`Resolutions: ${resArray}`)
         })
-        .catch(e => this.log(red(e)))
+        .catch(e => this.log(red(e + '\nUnable to find video with this ID')))
     } else {
       this.log(red('Error: No url or video id provided'))
       this.log(warn('Run the command with --help flag to learn more'))

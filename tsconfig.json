@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {"*": ["types/*"]},
     "declaration": true,
     "importHelpers": true,
     "module": "commonjs",
@@ -9,7 +11,5 @@
     "target": "es2017",
     "composite": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
