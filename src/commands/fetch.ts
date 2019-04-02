@@ -5,6 +5,8 @@ const getTwitchLink = require('node-twitch-link')
 const ffmpeg = require('fluent-ffmpeg')
 require('dotenv').config()
 const _cliProgress = require('cli-progress')
+const notifier = require('node-notifier')
+const path = require('path')
 const client: string = process.env.TWITCH_CLIENT as string
 export default class Fetch extends Command {
   static description = 'Downloads and processes Twitch.tv video'
@@ -96,6 +98,12 @@ export default class Fetch extends Command {
               .on('end', () => {
                 bar.stop()
                 this.log(green('√') + ' Video converted')
+                notifier.notify({
+                  title: 'Conversion complete',
+                  message: 'Your video was successfully saved',
+                  icon: path.join(__dirname, 'notif.jpg'), // Absolute path (doesn't work on balloons)
+                  sound: true // Only Notification Center or Windows Toasters
+                })
               })
               .on('start', () => {
                 let res = video.url.split('/')
