@@ -10,37 +10,33 @@ CLI to retrieve Twitch.tv VODs
 ![Build](https://travis-ci.org/MatejTuray/twitchvod.svg?branch=master)
 
 <!-- toc -->
-
-- [twitchvod](#twitchvod)
-- [Usage](#usage)
-- [Commands](#commands)
-  <!-- tocstop -->
+* [twitchvod](#twitchvod)
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g twitchvod
 $ twitchvod COMMAND
 running command...
 $ twitchvod (-v|--version|version)
-twitchvod/0.0.5 win32-x64 node-v10.15.1
+twitchvod/1.0.1 win32-x64 node-v10.15.1
 $ twitchvod --help [COMMAND]
 USAGE
   $ twitchvod COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`twitchvod fetch VOD`](#twitchvod-fetch-vod)
-- [`twitchvod help [COMMAND]`](#twitchvod-help-command)
-- [`twitchvod info [VOD]`](#twitchvod-info-vod)
+* [`twitchvod fetch VOD`](#twitchvod-fetch-vod)
+* [`twitchvod help [COMMAND]`](#twitchvod-help-command)
+* [`twitchvod info [VOD]`](#twitchvod-info-vod)
 
 ## `twitchvod fetch VOD`
 
@@ -64,7 +60,7 @@ EXAMPLE
   $ twitchvod fetch 401113393 --res=720p60 --out=Some path for output file here
 ```
 
-_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v0.0.5/src\commands\fetch.ts)_
+_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.1/src\commands\fetch.ts)_
 
 ## `twitchvod help [COMMAND]`
 
@@ -98,6 +94,5 @@ EXAMPLE
   $ twitchvod info https://www.twitch.tv/videos/401113393
 ```
 
-_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v0.0.5/src\commands\info.ts)_
-
+_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.1/src\commands\info.ts)_
 <!-- commandsstop -->
