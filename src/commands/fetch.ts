@@ -91,7 +91,7 @@ export default class Fetch extends Command {
             ffmpeg(video.url)
               .on('error', (error: string) => {
                 bar.stop()
-                return process.stdout.write(error)
+                process.stdout.write(error)
               })
               .on('end', () => {
                 bar.stop()
