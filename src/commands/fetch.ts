@@ -53,7 +53,7 @@ export default class Fetch extends Command {
     const red = color.red
     const {args, flags} = this.parse(Fetch)
     const tokenObj = {
-      client_id: client
+      client_id: 'bc0jezu5plohhw08pud3z5bpojodr9'
     }
     if (args.vod && flags.res) {
       const twitchUrl = args.vod

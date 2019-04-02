@@ -29,7 +29,7 @@ export default class Info extends Command {
     const tokenObj = {
       client_id: client
     }
-    const headers = {'Client-ID': tokenObj.client_id}
+    const headers = {'Client-ID': 'bc0jezu5plohhw08pud3z5bpojodr9'}
     if (args.vod) {
       const url = args.vod
       cli.action.start('Fetching information', 'running', {stdout: true})
