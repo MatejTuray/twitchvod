@@ -23,7 +23,7 @@ $ npm install -g twitchvod
 $ twitchvod COMMAND
 running command...
 $ twitchvod (-v|--version|version)
-twitchvod/1.0.2 win32-x64 node-v10.15.1
+twitchvod/1.0.4 win32-x64 node-v10.15.1
 $ twitchvod --help [COMMAND]
 USAGE
   $ twitchvod COMMAND
@@ -50,17 +50,18 @@ ARGUMENTS
   VOD  Link to twitch VOD url or ID
 
 OPTIONS
-  -h, --help                                                       show CLI help
-  -o, --out=out                                                    Output file path
+  -h, --help                                                                              show CLI help
+  -o, --out=out                                                                           Output file path
 
-  -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only  [default: chunked] Video resolution (chunked is the
-                                                                   highest quality)
+  -r, --res=chunked|720p60|720p30|480p30|360p30|160p30|audio_only|high|low|medium|mobile  [default: chunked] Video
+                                                                                          resolution (chunked is the
+                                                                                          highest quality)
 
 EXAMPLE
   $ twitchvod fetch 401113393 --res=720p60 --out=Some path for output file here
 ```
 
-_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.2/src\commands\fetch.ts)_
+_See code: [src\commands\fetch.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.4/src\commands\fetch.ts)_
 
 ## `twitchvod help [COMMAND]`
 
@@ -94,5 +95,5 @@ EXAMPLE
   $ twitchvod info https://www.twitch.tv/videos/401113393
 ```
 
-_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.2/src\commands\info.ts)_
+_See code: [src\commands\info.ts](https://github.com/MatejTuray/twitchvod/blob/v1.0.4/src\commands\info.ts)_
 <!-- commandsstop -->
