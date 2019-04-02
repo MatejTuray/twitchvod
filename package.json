@@ -1,7 +1,7 @@
 {
   "name": "twitchvod",
   "description": "CLI to retrieve Twitch.tv VODs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "MatejTuray @MatejTuray",
   "bin": {
     "twitchvod": "./bin/twitchvod"
@@ -53,7 +53,10 @@
   ],
   "homepage": "https://github.com/MatejTuray/twitchvod",
   "keywords": [
-    "oclif"
+    "oclif",
+    "twitch",
+    "cli",
+    "vod"
   ],
   "license": "MIT",
   "main": "lib/index.js",
