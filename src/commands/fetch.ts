@@ -29,7 +29,11 @@ export default class Fetch extends Command {
         '480p30',
         '360p30',
         '160p30',
-        'audio_only'
+        'audio_only',
+        'high',
+        'low',
+        'medium',
+        'mobile'
       ]
     }),
     out: flags.string({
