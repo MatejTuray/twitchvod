@@ -16,7 +16,8 @@ CLI to retrieve Twitch.tv VODs
 <!-- tocstop -->
 
 # Usage
-
+Twitchvod uses ffmpeg as a dependency, while I've added an npm package it may not work on all OS
+So if you get an error about missing ffmpeg install it please
 <!-- usage -->
 ```sh-session
 $ npm install -g twitchvod
