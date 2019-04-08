@@ -5,7 +5,7 @@ CLI to retrieve Twitch.tv VODs
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/twitchvod.svg)](https://npmjs.org/package/twitchvod)
 [![Codecov](https://codecov.io/gh/MatejTuray/twitchvod/branch/master/graph/badge.svg)](https://codecov.io/gh/MatejTuray/twitchvod)
-[![Downloads/week](https://img.shields.io/npm/dw/twitchvod.svg)](https://npmjs.org/package/twitchvod)
+[![Downloads/week](https://img.shields.io/npm/dt/twitchvod.svg)](https://npmjs.org/package/twitchvod)
 [![License](https://img.shields.io/npm/l/twitchvod.svg)](https://github.com/MatejTuray/twitchvod/blob/master/package.json)
 ![Build](https://travis-ci.org/MatejTuray/twitchvod.svg?branch=master)
 
